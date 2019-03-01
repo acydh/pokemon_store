@@ -1,45 +1,58 @@
 import React from 'react';
-import './css/styles.css';
-import List from './List/List';
-import SearchBar from './SearchBar/SearchBar';
-import Header from './Header/Header';
-
+import ReactDOM from 'react-dom';
+import List from './components/List';
+import Header from './components/Header';
+import ListEmpty from './components/ListEmpty';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      keyword: '',
-      pokemons: pokemons,
-      cart: []
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            keyword: '',
+            pokemons: props.pokemons,
+        };
+
+        this.onChangeFilterInput = this.onChangeFilterInput.bind(this);
     }
-  }
 
-  addToCart = (event) => {
-    const pokemonToAdd = event.target.getAttribute("id");
-    const pokemonInCart = [...this.state.cart];
-    pokemonInCart.push(pokemonToAdd);
-    this.setState(
-      {
-        cart: pokemonInCart
-      }
-    );
-    console.log(this.state.cart);
-  };
+    onChangeFilterInput(e) {
+        const { pokemons } = this.state;
+        const keyword = e.target.value.toLowerCase();
 
-  filterByName = () => {
+        this.setState({
+            keyword
+        });
+    }
 
-  }
+    render() {
+        const { keyword } = this.state;
 
-  render() {
-    return (
-      <div className="wrapper">
-          <Header />
-          <SearchBar />
-          <List pokemons={this.state.pokemons} add={this.addToCart}/>
-      </div>
-    );
-  }
+        const filteredPokemons = pokemons.filter((pokemon) => {
+            const name = pokemon.name.toLowerCase();
+
+            return name.indexOf(keyword) > -1;
+        });
+
+        return (
+            <div className="wrapper">
+                <Header toggleCart={this.toggleCart} />
+
+                <div className="filterInput">
+                    <input onChange={this.onChangeFilterInput} type="text" value={keyword} placeholder="Gotta Catch'em all" />
+                </div>
+
+
+                { filteredPokemons.length > 0 ? (
+                    <List pokemons={filteredPokemons} />
+                ) : false }
+
+                { filteredPokemons.length === 0 ? (
+                    <ListEmpty />
+                ) : false }
+            </div>
+        );
+    }
 }
 
 const pokemons = [
@@ -57,7 +70,7 @@ const pokemons = [
     },
     {
         id: 3,
-        name: 'Bulbasaur',
+        name: 'Bullbasaur',
         type: 'grass',
         image: 'img/bullbasaur.svg',
     },
@@ -138,7 +151,10 @@ const pokemons = [
         name: 'Dratini',
         type: 'water',
         image: 'img/dratini.svg',
-    }
-  ];
+    },
+];
 
-export default App;
+ReactDOM.render(
+    <App pokemons={pokemons} />,
+    document.getElementById('root')
+);
