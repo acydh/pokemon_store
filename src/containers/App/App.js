@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './App.scss';
 import List from '../../components/List/List';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import Cart from '../../components/Cart/Cart';
 import Header from '../../components/Header/Header';
 
 
@@ -9,15 +10,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterKeyword: '',
-      filterType: 'any',
+      nameFilter: '',
+      typeFilter: 'any',
       pokemons: pokemons,
-      cart: []
+      cart: [],
+      showCart: false
     }
   }
 
   addToCart = (event) => {
-    const pokemonToAdd = event.target.getAttribute("id");
+    const id = event.target.getAttribute("id");
+    const pokemonToAdd = this.state.pokemons[id-1];
     const pokemonInCart = [...this.state.cart];
     pokemonInCart.push(pokemonToAdd);
     this.setState(
@@ -25,27 +28,47 @@ class App extends React.Component {
         cart: pokemonInCart
       }
     );
-    console.log(this.state.cart);
   };
 
   filterByNameHandler = (event) => {
     const keyword = event.target.value;
-    this.setState({filterKeyword: keyword});
+    this.setState({nameFilter: keyword});
   }
 
   filterByTypeHandler = (event) => {
     const type = event.target.innerHTML;
-    this.setState({filterType: type});
+    this.setState({typeFilter: type});
   }
 
+  toggleCartHandler = () => {
+    if (this.state.showCart === true) {
+      this.setState({showCart: false})
+    } else {
+      this.setState({showCart: true})
+    }
+  }
+
+  removeItemHandler = (event) => {
+    const id = event.target.getAttribute("id");
+    const pokemonInCart = [...this.state.cart];
+    pokemonInCart.splice(id, 1);
+    this.setState(
+      {
+        cart: pokemonInCart
+      }
+    );
+  };
+
   render() {
-    console.log("Keyword filter: " + this.state.filterKeyword);
-    console.log("Type filter: " + this.state.filterType);
+    const cartLength = (this.state.cart).length;
+    const cart = this.state.showCart ? <Cart isCartOpen={this.state.showCart} toggleCart={this.toggleCartHandler} cartItems={this.state.cart} removeItemFromCart={this.removeItemHandler}/> : null;
+
     return (
       <div className={classes.wrapper}>
-          <Header />
+          <Header cartItems={cartLength} toggleCart={this.toggleCartHandler} />
           <SearchBar filterByName={this.filterByNameHandler} filterByType={this.filterByTypeHandler}/>
-          <List pokemons={this.state.pokemons} add={this.addToCart} filterByName={this.state.filterKeyword} filterByType={this.state.filterType}/>
+          <List pokemons={this.state.pokemons} addToCart={this.addToCart} removeFromCart={this.removeItemHandler} nameFilter={this.state.nameFilter} typeFilter={this.state.typeFilter}/>
+          { cart }
       </div>
     );
   }

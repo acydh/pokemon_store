@@ -17,3 +17,27 @@
     }
   }
 }
+
+.cartBtn {
+  cursor: pointer;
+  position: relative;
+}
+
+.cartItemCount {
+  background: #ed4630;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 25px;
+  color: white;
+  z-index: 1;
+  right: -8px;
+  top: -8px;
+}
+
+.cartBtn img {
+  width: 40px;
+  opacity: .2;
+}

@@ -28,21 +28,22 @@
       border-radius: 20px;
       padding: 10px 15px;
       cursor: pointer;
-        &.selected { color: #fff; }
         &:hover {
           background-color: #d6d6d6;
-          &.any { background-color: #b9b6d1; }
-          &.normal { background-color: #a6ab76; }
-          &.electric { background-color: #e3c260; }
-          &.fire { background-color: #fe7500; }
-          &.water { background-color: #6a87f3; }
-          &.grass { background-color: #53d34e; }
-          &.bug { background-color: #a0bf04; }
-          &.fight { background-color: #cf000b; }
-          &.psychic { background-color: #ff2482; }
-          &.flying { background-color: #b282f2; }
-          &.fairy { background-color: #e999de }
-          &.figa { background-color: pink }
         }
+        &.selected { color: #fff; }
+        &.any { background-color: #b9b6d1; }
+        &.normal { background-color: #a6ab76; }
+        &.electric { background-color: #e3c260; }
+        &.fire { background-color: #fe7500; }
+        &.water { background-color: #6a87f3; }
+        &.grass { background-color: #53d34e; }
+        &.bug { background-color: #a0bf04; }
+        &.fight { background-color: #cf000b; }
+        &.psychic { background-color: #ff2482; }
+        &.flying { background-color: #b282f2; }
+        &.fairy { background-color: #e999de }
+
+
     }
   }

@@ -19,9 +19,10 @@ class Card extends Component {
     const buttonClicked = (event) => {
       if (this.state.added) {
         this.setState({added:false})
+        self.removeFromCart(event);
       } else {
         this.setState({added:true})
-        self.add(event);
+        self.addToCart(event);
       }
     }
     return (

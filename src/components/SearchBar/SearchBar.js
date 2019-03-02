@@ -1,26 +1,39 @@
 import React from 'react';
 import classes from './SearchBar.scss';
 
-const searchBar = (props) => {
-  return (
-    <div>
-      <div className={classes.filterInput}>
-        <input type="text" placeholder="Gotta Catch 'em all!" onChange={props.filterByName}></input>
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  state = {
+    selectedType: ""
+  }
+  render() {
+    const self = this.props;
+    const typeClicked = (event) => {
+      self.filterByType(event);
+       this.setState({selectedType: event.target.innerHTML});
+    }
+    return (
+      <div>
+        <div className={classes.filterInput}>
+          <input type="text" placeholder="Gotta Catch 'em all!" onChange={self.filterByName}></input>
+        </div>
+        <ul className={classes.typeList}>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'any' ? classes.any : null}>any</li>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'normal' ? classes.normal : null}>normal</li>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'electric' ? classes.electric : null}>electric</li>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'fire' ? classes.fire : null}>fire</li>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'water' ? classes.water : null}>water</li>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'grass' ? classes.grass : null}>grass</li>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'fight' ? classes.fight : null}>fight</li>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'psychic' ? classes.psychic : null}>psychic</li>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'fairy' ? classes.fairy : null}>fairy</li>
+          <li onClick={(event) => typeClicked(event)} className={this.state.selectedType === 'flying' ? classes.flying : null}>flying</li>
+        </ul>
       </div>
-      <ul className={classes.typeList}>
-        <li onClick={props.filterByType} className={[classes.any, classes.selected].join(" ")}>any</li>
-        <li onClick={props.filterByType} className={classes.normal}>normal</li>
-        <li onClick={props.filterByType} className={classes.electric}>electric</li>
-        <li onClick={props.filterByType} className={classes.fire}>fire</li>
-        <li onClick={props.filterByType} className={classes.water}>water</li>
-        <li onClick={props.filterByType} className={classes.grass}>grass</li>
-        <li onClick={props.filterByType} className={classes.fight}>fight</li>
-        <li onClick={props.filterByType} className={classes.psychic}>psychic</li>
-        <li onClick={props.filterByType} className={classes.fairy}>fairy</li>
-        <li onClick={props.filterByType} className={classes.flying}>flying</li>
-      </ul>
-    </div>
-  )
+    )
+  }
 }
 
-export default searchBar;
+export default SearchBar;
