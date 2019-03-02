@@ -1,0 +1,48 @@
+.filterInput {
+  margin-top: 30px;
+  padding: 5px;
+  input {
+    width: 100%;
+    height: 45px;
+    padding: 8px 10px;
+    font-size: 16px;
+    display: block;
+    border: none;
+    box-shadow: 0px 1px 2px 1px #e1e1e1;
+    &:focus {
+      outline: none;
+      box-shadow: 0px 2px 2px 1px #d2d0d0;
+    }
+  }
+}
+
+
+.typeList {
+  display: flex;
+  list-style: none;
+  padding: 0 5px;
+    li {
+      margin-right: 15px;
+      background: #e4e3e3;
+      color: dimgrey;
+      border-radius: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+        &.selected { color: #fff; }
+        &:hover {
+          background-color: #d6d6d6;
+          &.any { background-color: #b9b6d1; }
+          &.normal { background-color: #a6ab76; }
+          &.electric { background-color: #e3c260; }
+          &.fire { background-color: #fe7500; }
+          &.water { background-color: #6a87f3; }
+          &.grass { background-color: #53d34e; }
+          &.bug { background-color: #a0bf04; }
+          &.fight { background-color: #cf000b; }
+          &.psychic { background-color: #ff2482; }
+          &.flying { background-color: #b282f2; }
+          &.fairy { background-color: #e999de }
+          &.figa { background-color: pink }
+        }
+    }
+  }

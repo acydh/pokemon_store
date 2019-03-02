@@ -1,0 +1,19 @@
+.header {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  flex: 1;
+  img {
+    width: 80px;
+    margin: 0 auto;
+    display: block;
+    &:hover {
+      transform: rotate(360deg);
+      transition-duration: .8s;
+      transition-timing-function: ease-out;
+    }
+  }
+}
