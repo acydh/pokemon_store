@@ -1,3 +1,5 @@
+$color-lightblue: #5898e8;
+
 .listItem {
   width: 24%;
   background: #fff;
@@ -40,26 +42,16 @@
   border-radius: 3px;
   box-shadow: 0px 1px 1px 1px #e1e1e1;
   &:hover {
-    background: #5898e8;
+    background: $color-lightblue;
     color: white;
     cursor: pointer;
   }
 }
 
 .listItem_added {
-  background-color: white;
-  color: black;
+  background-color: $color-lightblue;
+  color: white;
   &:hover {
     cursor: not-allowed;
-    background-color: white;
-    color: black;
   }
-}
-
-.list--empty {
-  text-align: center;
-  padding-bottom: 50px;
-  padding-top: 0px;
-  img { width: 100px; }
-  p { opacity: .8; }
 }

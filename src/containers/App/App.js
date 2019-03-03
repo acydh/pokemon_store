@@ -61,14 +61,13 @@ class App extends React.Component {
 
   render() {
     const cartLength = (this.state.cart).length;
-    const cart = this.state.showCart ? <Cart isCartOpen={this.state.showCart} toggleCart={this.toggleCartHandler} cartItems={this.state.cart} removeItemFromCart={this.removeItemHandler}/> : null;
 
     return (
       <div className={classes.wrapper}>
           <Header cartItems={cartLength} toggleCart={this.toggleCartHandler} />
           <SearchBar filterByName={this.filterByNameHandler} filterByType={this.filterByTypeHandler}/>
-          <List pokemons={this.state.pokemons} addToCart={this.addToCart} removeFromCart={this.removeItemHandler} nameFilter={this.state.nameFilter} typeFilter={this.state.typeFilter}/>
-          { cart }
+          <List pokemons={this.state.pokemons} addToCart={this.addToCart} cart={this.state.cart} nameFilter={this.state.nameFilter} typeFilter={this.state.typeFilter}/>
+          <Cart isCartOpen={this.state.showCart} toggleCart={this.toggleCartHandler} cartItems={this.state.cart} removeItemFromCart={this.removeItemHandler}/>
       </div>
     );
   }

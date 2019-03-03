@@ -29,7 +29,7 @@ class List extends React.Component {
     //Create the list with filtered pokemons
     const pokemonList = (
       filteredPokemons.map(pokemon =>
-        <Card name={pokemon.name} price="45$" image={pokemon.image} key={pokemon.id} id={pokemon.id} addToCart={self.addToCart} removeFromCart={self.removeFromCart} />
+        <Card name={pokemon.name} price="45$" image={pokemon.image} key={pokemon.id} id={pokemon.id} addToCart={self.addToCart} cart={self.cart} />
       )
     )
 
