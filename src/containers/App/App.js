@@ -14,7 +14,6 @@ class App extends React.Component {
       typeFilter: 'any',
       pokemons: pokemons,
       cart: [],
-      showCart: false
     }
   }
 
@@ -48,13 +47,21 @@ class App extends React.Component {
     }
   }
 
-  removeItemHandler = (event) => {
-    const id = event.target.getAttribute("id");
-    const pokemonInCart = [...this.state.cart];
-    pokemonInCart.splice(id, 1);
+  removeItemHandler = (event, item) => {
+    console.log(this.state.cart[item.id - 1]);
+    const cartCopy = [...this.state.cart];
+    let index = null;
+    cartCopy.map((pokemon, i) => {
+      if (item.id === pokemon.id ) {
+        index = i;
+        return null;
+      }
+      return null;  
+    });
+    cartCopy.splice(index, 1);
     this.setState(
       {
-        cart: pokemonInCart
+        cart: cartCopy
       }
     );
   };

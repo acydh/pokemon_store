@@ -7,7 +7,7 @@
   border-top: 1px solid #e1e1e1;
   z-index: 1;
   transition: all .25s ease-in-out;
-  height: 190px;
+  height: 230px;
 }
 
 .cart_active {
@@ -23,6 +23,7 @@
 
 .cartListItem {
   margin-right: 30px;
+  margin-top: 50px;
   position: relative;
 }
 
@@ -50,24 +51,21 @@
   width: 110px;
 }
 
-.cartHeading {
-  margin-top: 15px;
-  margin-left: 30px;
-  opacity: .8;
-}
-
 .cartEmpty {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 80px;
   font-size: 30px;
   font-weight: bold;
   opacity: .9;
 }
 
-.cartCloseBtn {
+.cartCloseBar {
   position: absolute;
-  right: 15px;
-  top: 15px;
+  text-align: center;
+  border: solid 1px #ddd;
+  width: 100%;
+  height: 35px;
+  top: 0;
   opacity: .6;
   cursor: pointer;
 }

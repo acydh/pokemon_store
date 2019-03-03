@@ -8,8 +8,7 @@ class Cart extends React.Component {
       if (isCartOpen) cartClasses.push(classes.cart_active);
       return (
         <div className={cartClasses.join(" ")}>
-          <div className={classes.cartHeading}>My Cart</div>
-          <div className={classes.cartCloseBtn} onClick={toggleCart}>Close</div>
+        <div className={classes.cartCloseBar} onClick={toggleCart}><i class="fas fa-chevron-down fa-2x"></i></div>
 
           { cartItems.length > 0 ? (
                     <div className={classes.cartList}>
