@@ -1,3 +1,9 @@
+$break-small: 540px;
+$break-medium: 720px;
+$break-large: 960px;
+$break-extra-large: 1140px;
+
+
 .filterInput {
   margin-top: 30px;
   padding: 5px;
@@ -15,7 +21,6 @@
     }
   }
 }
-
 
 .typeList {
   display: flex;
@@ -44,6 +49,17 @@
         &.flying { background-color: #b282f2; }
         &.fairy { background-color: #e999de }
 
-
+        @media only screen and (max-width: $break-large) {
+          margin: 10px 0;
+    	  }
+    }
+    @media only screen and (max-width: $break-large) {
+      position: absolute;
+      right: 10px;
+      text-align: center;
+  		display: inline-block;
+	  }
+    @media only screen and (max-width: $break-small) {
+      font-size: 13px
     }
   }
